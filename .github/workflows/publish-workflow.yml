@@ -3,7 +3,7 @@ on:
  push:
    branches: [ 'develop',  'master' ]
    paths:
-      - 'templates/**'
+   - 'templates/**'
 jobs:
   publish-workflow-template:
     runs-on: ubuntu-latest
