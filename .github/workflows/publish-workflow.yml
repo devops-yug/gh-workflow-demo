@@ -4,6 +4,7 @@ on:
    branches: [ 'develop',  'master' ]
    paths:
    - 'templates/**'
+   - '.github/workflows/publish-workflow.yml'
 jobs:
   publish-workflow-template:
     runs-on: ubuntu-latest
@@ -33,7 +34,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Github Agent | Workflows has updated"
-          git push
+          if ( (git status --porcelain) == null)
+           git add .
+           git commit -m "Github Agent | Workflows has updated"
+           git push
+          fi
         working-directory: ./${{ matrix.target_repo }}
