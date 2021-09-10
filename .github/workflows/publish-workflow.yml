@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if [ $(git status --porcelain) == null ]; then
+          if (( $(git status --porcelain | wc -l)>0 )); then
            git add .
            git commit -m "Github Agent | Workflows has updated"
            git push
