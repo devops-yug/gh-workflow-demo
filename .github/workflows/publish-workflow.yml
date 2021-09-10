@@ -7,7 +7,7 @@ on:
    - '.github/workflows/publish-workflow.yml'
 jobs:
   publish-workflow-template:
-    runs-on: ubuntu-latest
+    runs-on: group-runner
     strategy:
       matrix:
         target_repo: [ 'java-service-1' , 'java-service-2' ]
@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if ( (git status --porcelain) == null)
+          if [ (git status --porcelain) == null ]; then
            git add .
            git commit -m "Github Agent | Workflows has updated"
            git push
