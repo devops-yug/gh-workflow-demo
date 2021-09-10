@@ -7,7 +7,7 @@ on:
    - '.github/workflows/publish-workflow.yml'
 jobs:
   publish-workflow-template:
-    runs-on: group-runner
+    runs-on: self-hosted
     strategy:
       matrix:
         target_repo: [ 'java-service-1' , 'java-service-2' ]
